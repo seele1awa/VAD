@@ -1,0 +1,37 @@
+model_paras:
+  motion_channels: 2
+  num_flows: 1
+  num_slots: 2000
+  shrink_thres: 0.0005
+  feature_root: 32
+  skip_conn: True
+  mem_usage: [ False, True, True, True ]
+  skip_ops: [ "none", "concat", "concat" ]
+
+# exp settings
+dataset_base_dir: ./data
+dataset_name: avenue
+exp_name: avenue_ML_MemAE_SC
+ckpt_root: /A/autodl-tmp/vad/ckpt
+log_root: /A/autodl-tmp/vad/log
+eval_root: /A/autodl-tmp/vad/eval
+device: cuda:0
+
+pretrained: False
+model_savename: model.pth
+# num of iterations to log
+logevery: 100
+
+# num of epoch to save models
+saveevery: 1
+
+# training setting
+num_epochs: 80
+batchsize: 256
+lr: 0.0001
+num_workers: 8
+lam_sparse: 0.0002
+lam_recon: 1.0
+
+
+
