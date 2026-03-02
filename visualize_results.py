@@ -351,7 +351,13 @@ def visualize_video(video_id, dataset_name, dataset_base_dir, frame_scores, fram
         if global_frame_idx in bboxes_dict:
             current_bboxes = bboxes_dict[global_frame_idx]
             if global_frame_idx < len(frame_bbox_scores):
-                current_scores = frame_bbox_scores[global_frame_idx]
+                raw_scores = frame_bbox_scores[global_frame_idx]
+                if raw_scores:
+                    # 按 key 排序后重映射为帧内 bbox 索引 (0, 1, 2...)
+                    # extract_samples 中样本按 bbox 顺序生成，eval 中 shuffle=False
+                    # 因此全局索引排序后的顺序即为帧内 bbox 的原始顺序
+                    sorted_scores = sorted(raw_scores.items(), key=lambda x: x[0])
+                    current_scores = {i: v for i, (_, v) in enumerate(sorted_scores)}
         
         # 使用跟踪器平滑边界框
         tracked_bboxes, tracked_scores, tracked_ids = tracker.update(current_bboxes, current_scores)

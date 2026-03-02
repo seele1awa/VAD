@@ -88,7 +88,7 @@ def evaluate(config, ckpt_path, testing_chunked_samples_file, suffix):
 
         # anomaly scores for each sample
         for i in range(len(scores)):
-            frame_bbox_scores[pred_frame_test[i][-1].item()][i] = scores[i]
+            frame_bbox_scores[pred_frame_test[i][-1].item()][indices_test[i].item()] = scores[i]
 
     del dataset_test
     gc.collect()

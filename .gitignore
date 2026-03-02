@@ -17,6 +17,8 @@ data/shanghaitech/training
 data/shanghaitech/shanghaitech_bboxes_test.npy
 data/shanghaitech/shanghaitech_bboxes_train.npy
 
+ckpts
+logs
 vis
 tests
 .kiro
@@ -26,3 +28,5 @@ eval
 
 assets/yolox_l_8x8_300e_coco_20211126_140236-d3bd2b23.pth
 assets/FlowNet2_checkpoint.pth.tar
+AGENTS.md
+

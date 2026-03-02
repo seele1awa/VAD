@@ -116,7 +116,7 @@ def evaluate(config, ckpt_path, testing_chunked_samples_file, training_stats_pat
         scores = config["w_r"] * of_scores + config["w_p"] * frame_scores
 
         for i in range(len(scores)):
-            frame_bbox_scores[pred_frame_test[i][-1].item()][i] = scores[i]
+            frame_bbox_scores[pred_frame_test[i][-1].item()][indices_test[i].item()] = scores[i]
 
     del dataset_test
 
